@@ -1,0 +1,231 @@
+<!-- 
+	此頁是展示用，沒有接後端資料
+-->
+<!DOCTYPE html>
+<html>
+<title>新世紀死亡輪盤online 2018</title>
+
+<meta http-equiv="cache-control" content="max-age=0" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+<meta http-equiv="pragma" content="no-cache" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<link rel="stylesheet" href="./css/main.css">
+
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<body>
+    <script>
+        var userInfo = Object.create(null);
+
+        window.fbAsyncInit = function() {
+          FB.init({
+            appId      : '213943169386228',
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v3.0'
+          });
+            
+          FB.AppEvents.logPageView();   
+          
+          
+          FB.getLoginStatus(function(response) {
+              if(response.status!='connected') {
+                  window.location = "/login.html";
+              } else {
+                loginCallback(response);
+              }
+          });
+
+        };
+      
+        (function(d, s, id){
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) {return;}
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+  
+        
+      </script>
+    
+    
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card" style="text-align: center;">
+      新世紀死亡輪盤online 2018
+  </div>
+  <div class="w3-bar w3-black w3-card">
+    
+    <a href="#" class="w3-bar-item w3-button w3-padding-large hide-at-small">RANK</a>
+    <a href="#TEAM" class="w3-bar-item w3-button w3-padding-large hide-at-small ">TEAM</a>
+
+    <a target="_blank" href="https://www.facebook.com/groups/fifaroulette/" class="w3-padding-large w3-right" style="padding: 12px 12px!important;"><i class="fa fa-facebook-official"></i></a>
+	
+  </div>
+
+    <div style="display: none;" class="alert alert-success w3-center thxmsg" >
+      <strong id="msg"></strong>
+    </div>
+</div>
+
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px" ng-app="myApp" ng-controller="contentCtrl">
+
+  <p id="userName" ></p>
+  
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" >
+    <h2 class="w3-wide w3-center">RANK 
+      <input id="rank-switch" type="checkbox" data-toggle="toggle" data-on="死亡輪盤" data-off="一般" data-onstyle="danger" >
+    </h2>
+	
+    <div ng-controller="rankCtrl"> 
+        <table id="rank-table" class="table table-striped">
+            <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Name</th>
+                  <th>積分</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users | orderBy: '-point'" ng-class="user.gameMember? 'game-member': ''">
+                  <td>{{$index+1}}</td>
+                  <td>{{user.name}}</td>
+                  <td id="point_{{user.id}}">{{user.point}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <div class="betting-summary"  ng-repeat="round in rounds" ng-show="isShowBettingSummary(round)">
+      <h3 class="w3-wide w3-center">Betting Summary - {{getRoundName(round)}}</h3>
+      <div style="overflow: auto;">
+        <table class="table table-striped" style="overflow: auto;">
+          <thead>
+            <tr>
+              <th></th>
+              <th ng-repeat="attendee in attendeesByRound[round]" ng-class="roundWinners.indexOf(attendee.id)!=-1? 'winner' : ''">
+                  <img ng-src="{{getTeamFlagUrl(attendee.teamId)}}" alt="POR" title="POR" class="flag">
+                  <p>{{getTeamNameCn(attendee.teamId)}}</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr ng-repeat="user in users">
+                <td class="name-col">{{user.name}}</td>
+                <td ng-repeat="attendee in attendeesByRound[round]" 
+                    ng-class="betsByUserId[user.id][attendee.id].bet
+                      && roundWinners.indexOf(betsByUserId[user.id][attendee.id].roundAttendeeId)!=-1? 'winner' : ''">
+                    {{betsByUserId[user.id][attendee.id].bet? 'o' : ''}}
+                </td>
+              </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+
+  </div>
+	
+
+    
+
+  <!-- The Contact Section -->
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="TEAM">
+    <h2 class="w3-wide w3-center">TEAM</h2>
+    <table id="rank-table" class="table table-striped">
+      <thead>
+          <tr>
+            <th>隊伍</th>
+            <th>基數</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="team in teams">
+              <td>
+                <img ng-src="./img/flags/{{team.simpleName}}" alt="POR" title="POR" class="flag">
+                {{getTeamNameCn(team.id)}}
+              </td>
+              <td>{{team.factor}}</td>
+          </tr>
+      </tbody>
+    </table>
+    
+    <h3 class="w3-wide w3-center">得分</h3>
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>隊伍</th>
+            <th>round</th>
+            <th>得分</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr ng-repeat="roundScore in roundScores">
+            <td>{{getTeamNameCn(roundScore.teamId)}}</td>  
+            <td>{{roundScore.round}}</td>
+            <td>{{roundScore.score}}</td>
+          </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  
+
+
+  
+<!-- End Page Content -->
+</div>
+
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <!-- <a target="_blank" href="https://www.facebook.com/groups/ada.tw/">
+	<i class="fa fa-facebook-official w3-hover-opacity"></i>
+  </a> -->
+  <!-- 
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  -->
+  <!-- <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p> -->
+  
+</footer>
+
+
+    <script src="./js/dataUtils.js"></script>
+    <script src="./js/dummyDataHandler.js"></script>
+    <script src="./js/app.js?v=17"></script>
+    
+</body>
+</html>

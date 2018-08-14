@@ -1,0 +1,260 @@
+#https://cloud.google.com/sql/docs/mysql/quickstart
+gcloud sql connect fifasql2018 --user=root 
+
+
+#
+CREATE DATABASE fifa;
+
+use fifa;
+CREATE TABLE `team` (
+	`id` INT(11) NOT NULL,
+	`name` VARCHAR(50) NOT NULL,
+	`simple_name` VARCHAR(50) NOT NULL,
+	`year` SMALLINT(6) NOT NULL,
+	`factor` TINYINT(4) NOT NULL
+)
+ENGINE=InnoDB
+;
+
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201801', 'Russia', 'rus', '2018', '2');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201802', 'Saudi Arabia', 'ksa', '2018', '4');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201803', 'Egypt', 'egy', '2018', '3');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201804', 'Uruguay', 'uru', '2018', '1');
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201805', 'Portugal', 'por', '2018', '1');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201806', 'Spain', 'esp', '2018', '1');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201807', 'Morocco', 'mar', '2018', '4');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201808', 'IR Iran', 'irn', '2018', '4');
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201809', 'France', 'fra', '2018', '1');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201810', 'Australia', 'aus', '2018', '4');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201811', 'Peru', 'per', '2018', '3');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201812', 'Denmark', 'den', '2018', '2');
+
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201813', 'Argentina', 'arg', '2018', '1');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201814', 'Iceland', 'isl', '2018', '3');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201815', 'Croatia', 'cro', '2018', '2');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201816', 'Nigeria', 'nga', '2018', '3');
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201817', 'Brazil', 'bra', '2018', '1');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201818', 'Switzerlan', 'sui', '2018', '2');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201819', 'Costa Rica', 'crc', '2018', '4');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201820', 'Serbia', 'srb', '2018', '3');
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201821', 'Germany', 'ger', '2018', '1');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201822', 'Mexico', 'mex', '2018', '2');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201823', 'Sweden', 'swe', '2018', '3');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201824', 'Korea Republic', 'kor', '2018', '4');
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201825', 'belgium', 'bel', '2018', '1');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201826', 'Panama', 'pan', '2018', '4');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201827', 'Tunisia', 'tun', '2018', '4');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201828', 'England', 'eng', '2018', '1');
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201829', 'Poland', 'pol', '2018', '2');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201830', 'Sengegal', 'sen', '2018', '3');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201831', 'Colombia', 'col', '2018', '2');
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('201832', 'Japan', 'jpn', '2018', '3');
+
+INSERT INTO `fifa`.`team` (`id`, `name`, `simple_name`, `year`, `factor`) VALUES ('0', 'unknown', 'unknown', '2018', '0');
+
+
+
+SELECT * FROM team;
+
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (1, 2018, 1, 'Group A', 201801);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2, 2018, 1, 'Group A', 201802);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3, 2018, 1, 'Group A', 201803);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (4, 2018, 1, 'Group A', 201804);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (5, 2018, 1, 'Group B', 201805);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (6, 2018, 1, 'Group B', 201806);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (7, 2018, 1, 'Group B', 201807);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (8, 2018, 1, 'Group B', 201808);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (9, 2018, 1, 'Group C', 201809);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (10, 2018, 1, 'Group C', 201810);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (11, 2018, 1, 'Group C', 201811);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (12, 2018, 1, 'Group C', 201812);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (13, 2018, 1, 'Group D', 201813);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (14, 2018, 1, 'Group D', 201814);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (15, 2018, 1, 'Group D', 201815);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (16, 2018, 1, 'Group D', 201816);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (17, 2018, 1, 'Group E', 201817);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (18, 2018, 1, 'Group E', 201818);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (19, 2018, 1, 'Group E', 201819);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (20, 2018, 1, 'Group E', 201820);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (21, 2018, 1, 'Group F', 201821);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (22, 2018, 1, 'Group F', 201822);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (23, 2018, 1, 'Group F', 201823);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (24, 2018, 1, 'Group F', 201824);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (25, 2018, 1, 'Group G', 201825);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (26, 2018, 1, 'Group G', 201826);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (27, 2018, 1, 'Group G', 201827);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (28, 2018, 1, 'Group G', 201828);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (29, 2018, 1, 'Group H', 201829);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (30, 2018, 1, 'Group H', 201830);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (31, 2018, 1, 'Group H', 201831);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (32, 2018, 1, 'Group H', 201832);
+
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2011, 2018, 2, '1C VS 2D', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2012, 2018, 2, '1C VS 2D', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2021, 2018, 2, '1A VS 2B', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2022, 2018, 2, '1A VS 2B', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2031, 2018, 2, '1B VS 2A', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2032, 2018, 2, '1B VS 2A', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2041, 2018, 2, '1D VS 2C', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2042, 2018, 2, '1D VS 2C', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2051, 2018, 2, '1E VS 2F', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2052, 2018, 2, '1E VS 2F', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2061, 2018, 2, '1G VS 2H', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2062, 2018, 2, '1G VS 2H', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2071, 2018, 2, '1F VS 2E', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2072, 2018, 2, '1F VS 2E', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2081, 2018, 2, '1H VS 2G', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (2082, 2018, 2, '1H VS 2G', 0);
+
+
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3011, 2018, 3, 'W49 VS W50', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3012, 2018, 3, 'W49 VS W50', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3021, 2018, 3, 'W53 VS W54', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3022, 2018, 3, 'W53 VS W54', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3031, 2018, 3, 'W55 VS W56', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3032, 2018, 3, 'W55 VS W56', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3041, 2018, 3, 'W51 VS W52', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (3042, 2018, 3, 'W51 VS W52', 0);
+
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (4011, 2018, 4, 'W57 VS W58', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (4012, 2018, 4, 'W57 VS W58', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (4021, 2018, 4, 'W59 VS W60', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (4022, 2018, 4, 'W59 VS W60', 0);
+
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (5011, 2018, 5, 'W61 VS W62', 0);
+INSERT INTO `round_attendee` (`id`, `year`, `round`, `group_name`, `team_id`) VALUES (5012, 2018, 5, 'W61 VS W62', 0);
+
+
+
+ mvn clean install appengine:run
+
+# deploy
+gcloud config set project project-id-6000481754642473118
+mvn clean install appengine:deploy
+
+ 
+
+
+基數 1 : 巴西、德國、法國、西班牙、阿根廷、比利時、英格蘭、烏拉圭、葡萄牙
+
+基數 2 : 克羅埃西亞、哥倫比亞、俄羅斯、波蘭、丹麥、墨西哥、瑞士
+
+基數 3 : 埃及、塞內加爾、塞爾維亞、尼日利亞、瑞典、祕魯、冰島、日本
+
+基數 4 : 南韓、哥斯大黎加、摩洛哥、伊朗、澳洲、突尼西亞、巴拉馬、沙烏地阿拉伯
+
+ 
+ 
+ CREATE TABLE `user` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`fb_id` VARCHAR(50) NOT NULL,
+	`name` VARCHAR(50) NOT NULL DEFAULT '0',
+	`is_game_member` TINYINT(1) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `fb_id` (`fb_id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=6
+;
+
+
+CREATE TABLE `bet` (
+	`user_id` INT(11) NOT NULL,
+	`round_attendee_id` INT(11) NOT NULL,
+	`bet` TINYINT(1) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`user_id`, `round_attendee_id`),
+	UNIQUE INDEX `user_id_round_attendee_id` (`user_id`, `round_attendee_id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+
+CREATE TABLE `round_winner` (
+	`round_attendee_id` INT(11) NOT NULL,
+	PRIMARY KEY (`round_attendee_id`),
+	UNIQUE INDEX `round_attendee_id` (`round_attendee_id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (1);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (3);
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (5);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (8);
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (10);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (11);
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (15);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (16);
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (17);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (18);
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (22);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (24);
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (25);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (28);
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (30);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (32);
+
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (1);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (3);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (5);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (8);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (10);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (11);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (15);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (16);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (17);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (18);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (22);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (24);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (25);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (28);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (30);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (32);
+
+
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (2021);
+INSERT INTO `round_winner` (`round_attendee_id`) VALUES (2032);
+
+1
+5
+
+CREATE TABLE `roundscore` (
+	`year` INT(11) NOT NULL,
+	`round` INT(11) NOT NULL,
+	`team_id` INT(11) NOT NULL,
+	`score` INT(11) NOT NULL,
+	PRIMARY KEY (`year`, `round`, `team_id`),
+	UNIQUE INDEX `year_round_team_id` (`year`, `round`, `team_id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+;
+
+INSERT INTO `fifa`.`roundscore` (`year`, `round`, `team_id`, `score`) VALUES ('2018', '2', '201801', '4');
+INSERT INTO `fifa`.`roundscore` (`year`, `round`, `team_id`, `score`) VALUES ('2018', '2', '201803', '3');
+INSERT INTO `fifa`.`roundscore` (`year`, `round`, `team_id`, `score`) VALUES ('2018', '2', '201805', '3');
+INSERT INTO `fifa`.`roundscore` (`year`, `round`, `team_id`, `score`) VALUES ('2018', '2', '201808', '1');
+
+
+(!isShowBettingSummary(round))&&userFbId2user[userInfo.userId].id!=user.id? '?' : (betsByUserId[user.id][attendee.id].bet? 'o' : '')
+
+
