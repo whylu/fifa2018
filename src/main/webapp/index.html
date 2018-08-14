@@ -35,41 +35,6 @@ body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
 </style>
 <body>
-    <script>
-        var userInfo = Object.create(null);
-
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '213943169386228',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v3.0'
-          });
-            
-          FB.AppEvents.logPageView();   
-          
-          
-          FB.getLoginStatus(function(response) {
-              if(response.status!='connected') {
-                  window.location = "/login.html";
-              } else {
-                loginCallback(response);
-              }
-          });
-
-        };
-      
-        (function(d, s, id){
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-  
-        
-      </script>
-    
     
 <!-- Navbar -->
 <div class="w3-top">

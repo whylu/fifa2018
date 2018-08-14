@@ -1,3 +1,6 @@
+<!-- 
+	此頁是展示用，沒有接後端資料
+-->
 <!DOCTYPE html>
 <html>
 <title>新世紀死亡輪盤online 2018</title>
@@ -32,41 +35,6 @@ body {font-family: "Lato", sans-serif}
 .mySlides {display: none}
 </style>
 <body>
-    <script>
-        var userInfo = Object.create(null);
-
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '213943169386228',
-            cookie     : true,
-            xfbml      : true,
-            version    : 'v3.0'
-          });
-            
-          FB.AppEvents.logPageView();   
-          
-          
-          FB.getLoginStatus(function(response) {
-              if(response.status!='connected') {
-                  window.location = "/login.html";
-              } else {
-                loginCallback(response);
-              }
-          });
-
-        };
-      
-        (function(d, s, id){
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) {return;}
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-  
-        
-      </script>
-    
     
 <!-- Navbar -->
 <div class="w3-top">
@@ -76,7 +44,6 @@ body {font-family: "Lato", sans-serif}
   <div class="w3-bar w3-black w3-card">
     
     <a href="#" class="w3-bar-item w3-button w3-padding-large hide-at-small">RANK</a>
-    <a href="#BET" class="w3-bar-item w3-button w3-padding-large hide-at-small ">BET</a>
     <a href="#TEAM" class="w3-bar-item w3-button w3-padding-large hide-at-small ">TEAM</a>
 
     <a target="_blank" href="https://www.facebook.com/groups/fifaroulette/" class="w3-padding-large w3-right" style="padding: 12px 12px!important;"><i class="fa fa-facebook-official"></i></a>
@@ -149,44 +116,6 @@ body {font-family: "Lato", sans-serif}
   </div>
 	
 
-  <!-- The Contact Section -->
-  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="BET">
-    <h2 class="w3-wide w3-center">BET</h2>
-    <div ng-controller="betCtrl">
-
-      <div class="round" ng-repeat="round in rounds">
-        <h3 class="w3-wide w3-center">{{getRoundName(round)}}</h3>
-        <table class="table table-striped" ng-repeat="attendeeGroup in attendeeGroupsByRound[round]">
-          <tbody>
-            <tr>
-              <td colspan="{{attendeeGroup.attendees.length}}">{{attendeeGroup.groupName}}</td>
-            </tr>
-            <tr class="flag">
-              <td ng-repeat="attendee in attendeeGroup.attendees">
-                <img ng-src="{{getTeamFlagUrl(attendee.teamId)}}" alt="POR" title="POR" class="flag">
-                <p>{{getTeamNameCn(attendee.teamId)}}</p>
-              </td>
-            </tr>
-            <tr class="checkbox-row">
-                <td ng-repeat="attendee in attendeeGroup.attendees">
-                    <input class="bet"  type="checkbox" 
-                      team-id="{{attendee.teamId}}" attendee-id="{{attendee.id}}"
-                      ng-disabled="!isBetable(attendeeGroup.round, attendee.id)"
-                      data-toggle="toggle" data-size="mini" data-onstyle="success"
-                      data-on="已下注" data-off="未下注"
-                      on-checkbox-finish-render
-                      >
-                </td>
-            </tr>
-          </tbody>
-        </table>  
-      </div>
-
-	    
-      
-    </div>
-  </div>
-    
     
 
   <!-- The Contact Section -->

@@ -14,26 +14,7 @@ var scoresPromise = scoresDeferred.promise();
 
 var userFbId2user = new Object(null);
 
-function loginCallback(response) {
-    userInfo.userId = response.authResponse.userID;
-    FB.api('/me', function(fbUser) {
-      $("#userName").html("Hi, "+fbUser.name);
-      
-        var request = {
-            "type": "POST", 
-            "url": "/user",
-            "data": {
-                "fbId": userInfo.userId,
-                "name": fbUser.name
-            }
-        };
-        dataUtils.fetch(request).then(function(result){
-            userDeferred.resolve();
-        });
-        
-    });
-
-}
+userDeferred.resolve();
 
 var app = angular.module('myApp', ['ngRoute']);
 
@@ -61,7 +42,8 @@ app.controller('contentCtrl', function($scope, $element, $timeout) {
     function fetchRoundScore() {
         var request = {
             "type": "GET", 
-            "url": "/roundScore"
+            "url": "/roundScore",
+			"dummy":  "/roundScore"
         };
         dataUtils.fetch(request).then(function(result) {
             $timeout(function(){
@@ -151,7 +133,8 @@ app.controller('contentCtrl', function($scope, $element, $timeout) {
     function fetchRoundWinners() {
         var request = {
             "type": "GET", 
-            "url": "/roundWinner"
+            "url": "/roundWinner",
+			"dummy":  "/roundWinner"
         };
         dataUtils.fetch(request).then(function(result) {
             $timeout(function(){
@@ -164,7 +147,8 @@ app.controller('contentCtrl', function($scope, $element, $timeout) {
         $timeout(function(){
             var requestForUsers = {
                 "type": "GET", 
-                "url": "/user"
+                "url": "/user",
+				"dummy":  "/user"
             };
             dataUtils.fetch(requestForUsers).then(function(result) {
                 $timeout(function(){
@@ -184,7 +168,8 @@ app.controller('contentCtrl', function($scope, $element, $timeout) {
     
     var request2 = {
         "type": "GET", 
-        "url": "/teamInfo"
+        "url": "/teamInfo",
+		"dummy":  "/teamInfo"
     };
     dataUtils.fetch(request2).then(function(result){
         $scope.teams = result;
@@ -210,6 +195,7 @@ app.controller('contentCtrl', function($scope, $element, $timeout) {
             var requestForBet = {
                 "type": "GET", 
                 "url": "/bet",
+				"dummy":"/bet"
             };
             dataUtils.fetch(requestForBet).then(function(result){
                 $timeout(function(){
@@ -249,7 +235,8 @@ app.controller('contentCtrl', function($scope, $element, $timeout) {
     function fetchRoundAttendees() {
         var request = {
             "type": "GET", 
-            "url": "/roundAttendee"
+            "url": "/roundAttendee",
+			"dummy":  "/roundAttendee"
         };
         dataUtils.fetch(request).then(function(result){
             
